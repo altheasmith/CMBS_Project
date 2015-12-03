@@ -1,3 +1,9 @@
+
 i {
   color: #083572;
+}
+
+.panel {
+  /*background-color: #BFDAFF;*/
+  border: 2px solid #083572;
 }
