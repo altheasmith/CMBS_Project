@@ -158,10 +158,10 @@ class Article(models.Model):
 	author = models.CharField(max_length=256)
 	blurb = models.TextField()
 	publisher_ID = models.ForeignKey('Publisher')
-	key_words = models.ManyToManyField('Keywords')
+	key_words = models.ManyToManyField('Keyword')
 
 
 class Publisher(models.Model):
 	name = models.CharField(max_length=256)
-	articles_searched = models.IntegerField()
+	Article_searched = models.IntegerField()
 	relevant_found = models.IntegerField()
