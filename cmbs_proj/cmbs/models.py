@@ -91,7 +91,7 @@ class Loan(models.Model):
 
 
 class Property(models.Model):
-	property_name = models.CharField(max_length=256) 
+	property_name = models.CharField(max_length=256)
 	uw = models.CharField(max_length=256)
 	deal = models.ForeignKey(Deal)
 	loan_name = models.CharField(max_length=128)
@@ -110,7 +110,7 @@ class Property(models.Model):
 	occ_as_of = models.DateField()
 	cutoff_occ = models.IntegerField()
 	cap_rate = models.DecimalField(max_digits=4, decimal_places=2)
-	cutoff_noi_usd = models.IntegerField() 
+	cutoff_noi_usd = models.IntegerField()
 	noi_usd = models.IntegerField()
 	noi_as_of = models.DateField()
 	cutoff_ncf_usd = models.IntegerField()
@@ -149,11 +149,11 @@ class Lease(models.Model):
 	loan_link = models.ForeignKey(Loan)
 
 
-class Keywords(models.Model):
+class Keyword(models.Model):
 	word = models.CharField(max_length=64)
 
 
-class Articles(models.Model):
+class Article(models.Model):
 	title = models.CharField(max_length=256)
 	author = models.CharField(max_length=256)
 	blurb = models.TextField()
