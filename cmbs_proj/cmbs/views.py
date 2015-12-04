@@ -13,11 +13,26 @@ class AllView(View):
     def get(self, request):
         articles = [model_to_dict(article) for article in Article.objects.all()]
         context = {'articles': articles}
+        context = {'term':term}
         return JsonResponse(context)
 
 class DealView(View):
     def get(self, request, term):
-        
         articles = [model_to_dict(Article.objects.get(id=1))]
         context = {'articles': articles}
+        context = {'term':term}
+        return JsonResponse(context)
+
+class LoanView(View):
+    def get(self, request, term):
+        articles = [model_to_dict(Article.objects.get(id=1))]
+        context = {'articles': articles}
+        context = {'term':term}
+        return JsonResponse(context)
+
+class PropertyView(View):
+    def get(self, request, term):
+        articles = [model_to_dict(Article.objects.get(id=1))]
+        context = {'articles': articles}
+        context = {'term':term}
         return JsonResponse(context)

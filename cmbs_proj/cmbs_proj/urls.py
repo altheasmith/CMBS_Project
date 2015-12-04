@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from cmbs.views import MainView, AllView, DealView
+from cmbs.views import MainView, AllView, DealView, LoanView, PropertyView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', MainView.as_view(), name='main'),
     url(r'^all/', AllView.as_view(), name='all'),
-    url(r'^deal_search/(?P<term>[\w]+)', DealView.as_view(), name='deal')
+    url(r'^deal_search/(?P<term>[\w]+)', DealView.as_view(), name='dealsearch'),
+    url(r'^loan_search/(?P<term>[\w]+)', LoanView.as_view(), name='loansearch'),
+    url(r'^property_search/(?P<term>[\w]+)', PropertyView.as_view(), name='propertysearch')
 ]
