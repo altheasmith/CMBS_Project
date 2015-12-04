@@ -6,7 +6,7 @@ class Deal(models.Model):
 	deal_name = models.CharField(max_length=32)
 
 	def __str__(self):
-		return deal_name
+		return self.deal_name
 
 class Loan(models.Model):
 	deal = models.ForeignKey('Deal')
@@ -92,7 +92,7 @@ class Loan(models.Model):
 	link_ID = models.CharField(max_length=64, primary_key=True)
 
 	def __str__(self):
-		return loan_name
+		return self.loan_name
 
 
 class Property(models.Model):
@@ -141,7 +141,7 @@ class Property(models.Model):
 	loan_link = models.ForeignKey(Loan)
 
 	def __str__(self):
-		return property_name
+		return self.property_name
 
 class Lease(models.Model):
 	lease_name = models.CharField(max_length=256)
@@ -156,13 +156,13 @@ class Lease(models.Model):
 	loan_link = models.ForeignKey(Loan)
 
 	def __str__(self):
-		return lease_name
+		return self.lease_name
 
 class Keyword(models.Model):
 	word = models.CharField(max_length=64)
 
 	def __str__(self):
-		return word
+		return self.word
 
 
 class Article(models.Model):
@@ -173,7 +173,7 @@ class Article(models.Model):
 	key_words = models.ManyToManyField('Keyword')
 
 	def __str__(self):
-		return title
+		return self.title
 
 
 class Publisher(models.Model):
@@ -182,4 +182,4 @@ class Publisher(models.Model):
 	relevant_found = models.IntegerField()
 
 	def __str__(self):
-		return name
+		return self.name
