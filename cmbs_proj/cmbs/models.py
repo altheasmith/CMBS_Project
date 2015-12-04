@@ -107,6 +107,7 @@ class Property(models.Model):
 	# msa = models.CharField(max_length=64)
 	state = models.CharField(max_length=2)
 	country = models.CharField(max_length=74)
+	loan_link_id = models.ForeignKey(Loan)
 	# appraisal_value_usd = models.IntegerField()
 	# value_as_of = models.DateField()
 	# cutoff_value_usd = models.IntegerField()
@@ -137,7 +138,7 @@ class Property(models.Model):
 	# lease_r_o_5th_yr = models.IntegerField()
 	# reo_comm = models.TextField()
 	# reo_comm_asof = models.DateField()
-	loan_link_id = models.ForeignKey(Loan)
+
 
 	def __str__(self):
 		return self.property_name

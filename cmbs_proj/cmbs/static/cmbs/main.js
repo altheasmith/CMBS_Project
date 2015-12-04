@@ -25,4 +25,36 @@ $(document).ready( function() {
       }
     });
   });
+  $('#loan_search').click(function(event){
+    var $search = $('#loan_search_term').val()
+    console.log('term', $('#loan_search_term').val())
+    console.log($search)
+    var url = String('/loan_search/' + $search)
+    $.get(url, function(data){
+      $('#searchresults').empty()
+      for (x in data.articles) {
+        $('#searchresults').append(
+          '<a href=' + data.articles[x].url + '>\
+          <h4>' + data.articles[x].title + '</h4></a>\
+          <p>' + data.articles[x].blurb + '</p></br>'
+        );
+      }
+    });
+  });
+  $('#property_search').click(function(event){
+    var $search = $('#property_search_term').val()
+    console.log('term', $('#property_search_term').val())
+    console.log($search)
+    var url = String('/property_search/' + $search)
+    $.get(url, function(data){
+      $('#searchresults').empty()
+      for (x in data.articles) {
+        $('#searchresults').append(
+          '<a href=' + data.articles[x].url + '>\
+          <h4>' + data.articles[x].title + '</h4></a>\
+          <p>' + data.articles[x].blurb + '</p></br>'
+        );
+      }
+    });
+  });
 });
