@@ -1,10 +1,10 @@
 from django.db import models
 
-# Create your models here.
-
 class Deal(models.Model):
 	deal_name = models.CharField(max_length=32)
 
+	def __str__(self):
+		return self.deal_name
 
 class Loan(models.Model):
 	link_ID = models.CharField(max_length=128, primary_key=True)
@@ -88,11 +88,14 @@ class Loan(models.Model):
 	# origination_dt = models.DateField()
 	# collateral_id = models.IntegerField()
 	# trustee_id = models.IntegerField()
-	
+
+
+	def __str__(self):
+		return self.loan_name
 
 
 class Property(models.Model):
-	property_name = models.CharField(max_length=256) 
+	property_name = models.CharField(max_length=256)
 	# uw = models.CharField(max_length=256)
 	deal = models.ForeignKey(Deal)
 	loan_name = models.CharField(max_length=128)
@@ -111,7 +114,7 @@ class Property(models.Model):
 	# occ_as_of = models.DateField()
 	# cutoff_occ = models.IntegerField()
 	# cap_rate = models.DecimalField(max_digits=5, decimal_places=2)
-	# cutoff_noi_usd = models.IntegerField() 
+	# cutoff_noi_usd = models.IntegerField()
 	# noi_usd = models.IntegerField()
 	# noi_as_of = models.DateField()
 	# cutoff_ncf_usd = models.IntegerField()
@@ -136,6 +139,9 @@ class Property(models.Model):
 	# reo_comm_asof = models.DateField()
 	# loan_link = models.ForeignKey(Loan)
 
+	def __str__(self):
+		return self.property_name
+
 
 class Lease(models.Model):
 	lease_name = models.CharField(max_length=256)
@@ -149,20 +155,33 @@ class Lease(models.Model):
 	loan_mat_dt = models.DateField()
 	loan_link = models.ForeignKey(Loan)
 
+	def __str__(self):
+		return self.lease_name
 
 class Keyword(models.Model):
 	word = models.CharField(max_length=64)
+
+	def __str__(self):
+		return self.word
 
 
 class Article(models.Model):
 	title = models.CharField(max_length=256)
 	author = models.CharField(max_length=256)
+	url = models.URLField(null=True)
 	blurb = models.TextField()
+	property_id = models.ForeignKey('Property')
 	publisher_ID = models.ForeignKey('Publisher')
 	key_words = models.ManyToManyField('Keyword')
+
+	def __str__(self):
+		return self.title
 
 
 class Publisher(models.Model):
 	name = models.CharField(max_length=256)
-	articles_searched = models.IntegerField()
+	Article_searched = models.IntegerField()
 	relevant_found = models.IntegerField()
+
+	def __str__(self):
+		return self.name
