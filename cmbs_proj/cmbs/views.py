@@ -17,6 +17,7 @@ class AllView(View):
 
 class DealView(View):
     def get(self, request, term):
+        
         articles = [model_to_dict(Article.objects.get(id=1))]
         context = {'articles': articles}
         return JsonResponse(context)
