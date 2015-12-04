@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from cmbs.views import MainView
+from cmbs.views import MainView, AllView, DealView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', MainView.as_view(), name='main'),
+    url(r'^all/', AllView.as_view(), name='all'),
+    url(r'^deal_search/(?P<term>[\w]+)', DealView.as_view(), name='deal')
 ]

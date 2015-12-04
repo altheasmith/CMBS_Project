@@ -25,16 +25,16 @@
         <form class="navbar-form" role="search">
           <div class="input-group">
             <div class="input-group-btn">
-              <button class="btn btn-default"><i class="glyphicon glyphicon-briefcase"></i></button>
+              <span class="btn btn-default"><i class="glyphicon glyphicon-briefcase"></i></span>
             </div>
-            <input type="text" class="form-control" placeholder="Deal Search" name="ds">
+            <input id="deal_search_term" type="text" class="form-control" placeholder="Deal Search" name="ds">
             <div class="input-group-btn">
               <button class="btn btn-default" type="dropdown-toggle" id="DealDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="caret"></i></button>
               <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="DealDropdown">
                 <li>Deal</li>
                 <li>Other Deal</li>
               </ul>
-              <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+              <span id="deal_search" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></span>
             </div>
           </div>
         </form>
@@ -43,16 +43,16 @@
         <form class="navbar-form" role="search">
           <div class="input-group">
             <div class="input-group-btn">
-              <button class="btn btn-default"><i class="glyphicon glyphicon-piggy-bank"></i></button>
+              <span class="btn btn-default"><i class="glyphicon glyphicon-piggy-bank"></i></span>
             </div>
-            <input type="text" class="form-control" placeholder="Loan Search" name="ls">
+            <input id="loan_search_term" type="text" class="form-control" placeholder="Loan Search" name="ls">
             <div class="input-group-btn">
               <button class="btn btn-default" type="dropdown-toggle" id="LoanDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="caret"></i></button>
               <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="LoanDropdown">
                 <li>Loan</li>
                 <li>Other Loan</li>
               </ul>
-              <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+              <span id="loan_search" class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></span>
             </div>
           </div>
         </form>
@@ -61,16 +61,16 @@
         <form class="navbar-form" role="search">
           <div class="input-group">
             <div class="input-group-btn">
-              <button class="btn btn-default"><i class="glyphicon glyphicon-home"></i></button>
+              <span class="btn btn-default"><i class="glyphicon glyphicon-home"></i></span>
             </div>
-            <input type="text" class="form-control" placeholder="Property Search" name="ps">
+            <input id="property_search_term" type="text" class="form-control" placeholder="Property Search" name="ps">
             <div class="input-group-btn">
               <button class="btn btn-default" type="dropdown-toggle" id="PropDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="caret"></i></button>
               <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="PropDropdown">
                 <li>Property</li>
                 <li>Other Property</li>
               </ul>
-              <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+              <span id="property_search" class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></span>
             </div>
           </div>
         </form>
@@ -80,10 +80,10 @@
 {% endblock %}
 
 {% block content %}
-<div class='panel col-md-10' style='height:20em'>
+<div id='searchresults' class='panel col-md-10'>
 </div>
-<div class='panel col-md-2' style='height:30em'>
+<!-- <div class='panel col-md-2' style='height:30em'>
   <nav class='navbar-vertical'>
   </nav>
-</div>
+</div> -->
 {% endblock %}

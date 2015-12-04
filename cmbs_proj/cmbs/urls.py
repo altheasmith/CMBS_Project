@@ -17,5 +17,4 @@ from django.conf.urls import include, url
 from cmbs.views import MainView
 
 urlpatterns = [
-    url(r'^$', MainView.as_view(), name='main'),
 ]

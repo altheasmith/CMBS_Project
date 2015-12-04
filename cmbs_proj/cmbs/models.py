@@ -168,9 +168,12 @@ class Keyword(models.Model):
 class Article(models.Model):
 	title = models.CharField(max_length=256)
 	author = models.CharField(max_length=256)
+	url = models.URLField(null=True)
 	blurb = models.TextField()
+	property_id = models.ForeignKey('Property')
 	publisher_ID = models.ForeignKey('Publisher')
 	key_words = models.ManyToManyField('Keyword')
+
 
 	def __str__(self):
 		return self.title
