@@ -5,6 +5,8 @@ from django.db import models
 class Deal(models.Model):
 	deal_name = models.CharField(max_length=32)
 
+	def __str__(self):
+		return deal_name
 
 class Loan(models.Model):
 	deal = models.ForeignKey('Deal')
@@ -89,6 +91,9 @@ class Loan(models.Model):
 	trustee_id = models.IntegerField()
 	link_ID = models.CharField(max_length=64, primary_key=True)
 
+	def __str__(self):
+		return loan_name
+
 
 class Property(models.Model):
 	property_name = models.CharField(max_length=256)
@@ -135,6 +140,8 @@ class Property(models.Model):
 	reo_comm_asof = models.DateField()
 	loan_link = models.ForeignKey(Loan)
 
+	def __str__(self):
+		return property_name
 
 class Lease(models.Model):
 	lease_name = models.CharField(max_length=256)
@@ -148,9 +155,14 @@ class Lease(models.Model):
 	loan_mat_dt = models.DateField()
 	loan_link = models.ForeignKey(Loan)
 
+	def __str__(self):
+		return lease_name
 
 class Keyword(models.Model):
 	word = models.CharField(max_length=64)
+
+	def __str__(self):
+		return word
 
 
 class Article(models.Model):
@@ -160,8 +172,14 @@ class Article(models.Model):
 	publisher_ID = models.ForeignKey('Publisher')
 	key_words = models.ManyToManyField('Keyword')
 
+	def __str__(self):
+		return title
+
 
 class Publisher(models.Model):
 	name = models.CharField(max_length=256)
 	Article_searched = models.IntegerField()
 	relevant_found = models.IntegerField()
+
+	def __str__(self):
+		return name
