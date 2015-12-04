@@ -1,4 +1,5 @@
 $(document).ready( function() {
+// Create function for returning articles since its the same in each one
   $.get('/all', function(data){
     console.log(data.articles)
     $('#searchresults').empty()
