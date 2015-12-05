@@ -11,6 +11,8 @@ $(document).ready( function() {
       );
     }
   });
+
+  // AJAX request for Deal Search
   $('#deal_search').click(function(event){
     $search = $('#deal_search_term').val()
     console.log('term', $('#deal_search_term').val())
@@ -26,6 +28,8 @@ $(document).ready( function() {
       }
     });
   });
+
+  // AJAX request for Loan Search
   $('#loan_search').click(function(event){
     var $search = $('#loan_search_term').val()
     console.log('term', $('#loan_search_term').val())
@@ -42,6 +46,8 @@ $(document).ready( function() {
       }
     });
   });
+
+  // AJAX request for Property Search
   $('#property_search').click(function(event){
     var $search = $('#property_search_term').val()
     console.log('term', $('#property_search_term').val())
