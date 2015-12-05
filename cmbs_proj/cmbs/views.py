@@ -14,6 +14,7 @@ def get_keywords(articles):
     for article in articles:
         keywords_list = [Keyword.objects.get(id=key).word for key in article['key_words']]
         article['key_words'] = ', '.join(keywords_list)
+        article['publisher'] = Publisher.objects.get(id=article['publisher_ID']).name
     return articles
 
 class MainView(View):
