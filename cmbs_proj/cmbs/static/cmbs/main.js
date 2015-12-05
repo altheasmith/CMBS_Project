@@ -24,6 +24,14 @@ $(document).ready( function() {
     });
   });
 
+  // AJAX request for Deal Dropdown
+  $('.deal').click(function(event){
+    $.get('/deal_search/' + $(this).html(), function(data){
+      post_articles(data);
+    });
+  });
+
+
   // AJAX request for Loan Search
   $('#loan_search').click(function(event){
     $.get('/loan_search/' + $('#loan_search_term').val(), function(data){
@@ -31,10 +39,26 @@ $(document).ready( function() {
     });
   });
 
+  // AJAX request for Deal Dropdown
+  $('.loan').click(function(event){
+    $.get('/loan_search/' + $(this).html(), function(data){
+      post_articles(data);
+    });
+  });
+
+
   // AJAX request for Property Search
   $('#property_search').click(function(event){
     $.get('/property_search/' + $('#property_search_term').val(), function(data){
       post_articles(data);
     });
   });
+
+  // AJAX request for Deal Dropdown
+  $('.property').click(function(event){
+    $.get('/property_search/' + $(this).html(), function(data){
+      post_articles(data);
+    });
+  });
+
 });
