@@ -6,9 +6,11 @@ $(document).ready( function() {
     for (x in data.articles) {
       console.log(data.articles[x].key_words)
       $('#searchresults').append(
-        '<div draggable="true" class="panel" id = "article_'+ x +'">\
+        '<div draggable="true" class="panel" id="article_'+ x +'">\
         <a href=' + data.articles[x].url + '>\
-        <h4>' + data.articles[x].title + '</h4></a>\
+        <h4>' + data.articles[x].title + ' \
+        (' + data.articles[x].publisher + ')</h4></a>\
+        <h6>' + data.articles[x].author + '</h6>\
         <p>' + data.articles[x].blurb + '</p>\
         <p class="keywords">Keywords: ' + data.articles[x].key_words + '</p>\
         </br></div>'
