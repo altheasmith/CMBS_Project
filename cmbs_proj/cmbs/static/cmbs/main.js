@@ -5,9 +5,10 @@ $(document).ready( function() {
     $('#searchresults').empty()
     for (x in data.articles) {
       $('#searchresults').append(
-        '<a href=' + data.articles[x].url + '>\
+        '<div draggable="true" class="panel" id = "article_'+ x +'">\
+        <a href=' + data.articles[x].url + '>\
         <h4>' + data.articles[x].title + '</h4></a>\
-        <p>' + data.articles[x].blurb + '</p></br>'
+        <p>' + data.articles[x].blurb + '</p></br></div>'
       );
     }
   }
@@ -61,4 +62,18 @@ $(document).ready( function() {
     });
   });
 
+  // Drag and Drop Functions
+  function allowDrop(ev) {
+    ev.preventDefault();
+  }
+
+  function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+  }
+
+  function drop(ev) {
+      ev.preventDefault();
+      var data = ev.dataTransfer.getData("text");
+      ev.target.appendChild(document.getElementById(data));
+  }
 });

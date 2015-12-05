@@ -1,13 +1,41 @@
 
 i {
-  /*color: #083572;*/
+  color: #083572;
 }
 
 h1 {
   /*color: #083572;*/
 }
 
+body {
+  background-color: #BFDAFF;
+  font-family: Tahoma;
+  color: #083572;
+  /*color:grey;*/
+}
+
 .panel {
-  /*background-color: #BFDAFF;*/
-  border: 2px solid #083572;
+  background-color: white;
+  color: black;
+  border-left: 1em solid white;
+  box-shadow: 5px 5px 5px #083572;
+}
+
+.input-group {
+  outline-color: #083572;
+  border-color: #083572;
+  color: #083572;
+  box-shadow: 5px 5px 3px #083572;
+}
+
+a {
+  color: #083572;
+}
+
+/*.textInput:focus{
+outline:none
+}*/
+
+ {
+  background-color: green;
 }
