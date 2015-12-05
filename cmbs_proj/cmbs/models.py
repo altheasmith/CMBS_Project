@@ -7,8 +7,8 @@ class Deal(models.Model):
 		return self.deal_name
 
 class Loan(models.Model):
-	link_ID = models.CharField(max_length=128, primary_key=True)
-	deal = models.ForeignKey('Deal')
+	link_id = models.CharField(max_length=128, primary_key=True)
+	deal = models.ForeignKey(Deal)
 	loan_name = models.CharField(max_length=256)
 	percent_deal = models.DecimalField(max_digits=5, decimal_places=2)
 	percent_deal_cutoff = models.DecimalField(max_digits=5, decimal_places=2)
@@ -107,6 +107,7 @@ class Property(models.Model):
 	# msa = models.CharField(max_length=64)
 	state = models.CharField(max_length=2)
 	country = models.CharField(max_length=74)
+	loan_link_id = models.ForeignKey(Loan)
 	# appraisal_value_usd = models.IntegerField()
 	# value_as_of = models.DateField()
 	# cutoff_value_usd = models.IntegerField()
@@ -137,7 +138,7 @@ class Property(models.Model):
 	# lease_r_o_5th_yr = models.IntegerField()
 	# reo_comm = models.TextField()
 	# reo_comm_asof = models.DateField()
-	# loan_link = models.ForeignKey(Loan)
+
 
 	def __str__(self):
 		return self.property_name
@@ -165,19 +166,6 @@ class Keyword(models.Model):
 		return self.word
 
 
-class Article(models.Model):
-	title = models.CharField(max_length=256)
-	author = models.CharField(max_length=256)
-	url = models.URLField(null=True)
-	blurb = models.TextField()
-	property_id = models.ForeignKey('Property')
-	publisher_ID = models.ForeignKey('Publisher')
-	key_words = models.ManyToManyField('Keyword')
-
-	def __str__(self):
-		return self.title
-
-
 class Publisher(models.Model):
 	name = models.CharField(max_length=256)
 	Article_searched = models.IntegerField()
@@ -185,3 +173,16 @@ class Publisher(models.Model):
 
 	def __str__(self):
 		return self.name
+
+
+class Article(models.Model):
+	title = models.CharField(max_length=256)
+	author = models.CharField(max_length=256)
+	url = models.URLField(null=True)
+	blurb = models.TextField()
+	property = models.ForeignKey(Property)
+	publisher_ID = models.ForeignKey(Publisher)
+	key_words = models.ManyToManyField(Keyword)
+
+	def __str__(self):
+		return self.title
