@@ -4,11 +4,14 @@ $(document).ready( function() {
   function post_articles(data) {
     $('#searchresults').empty()
     for (x in data.articles) {
+      console.log(data.articles[x].key_words)
       $('#searchresults').append(
         '<div draggable="true" class="panel" id = "article_'+ x +'">\
         <a href=' + data.articles[x].url + '>\
         <h4>' + data.articles[x].title + '</h4></a>\
-        <p>' + data.articles[x].blurb + '</p></br></div>'
+        <p>' + data.articles[x].blurb + '</p>\
+        <p class="keywords">Keywords: ' + data.articles[x].key_words + '</p>\
+        </br></div>'
       );
     }
   }

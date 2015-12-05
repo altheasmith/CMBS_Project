@@ -5,6 +5,17 @@ from cmbs.models import Deal, Loan, Property, Article, Publisher, Keyword, Lease
 from django.forms.models import model_to_dict
 
 
+def get_articles(prop):
+    prop = Property.objects.get(property_name=prop)
+    articles = [model_to_dict(article) for article in Article.objects.filter(property=prop)]
+    return articles
+
+def get_keywords(articles):
+    for article in articles:
+        keywords_list = [Keyword.objects.get(id=key).word for key in article['key_words']]
+        article['key_words'] = ', '.join(keywords_list)
+    return articles
+
 class MainView(View):
     def get(self, request):
         deals = Deal.objects.all()
@@ -16,6 +27,7 @@ class MainView(View):
 class AllView(View):
     def get(self, request):
         articles = [model_to_dict(article) for article in Article.objects.all()]
+        get_keywords(articles)
         context = {'articles': articles}
         return JsonResponse(context)
 
@@ -27,9 +39,8 @@ class DealView(View):
         for loan in loans:
             properties = Property.objects.filter(loan_link_id=loan)
             for prop in properties:
-                new_articles = [model_to_dict(article) for article in Article.objects.filter(property=prop)]
-            for article in new_articles:
-                articles.append(article)
+                articles += get_articles(prop)
+        articles = get_keywords(articles)
         context = {'articles': articles}
         return JsonResponse(context)
 
@@ -39,17 +50,14 @@ class LoanView(View):
         properties = Property.objects.filter(loan_link_id=loan)
         articles = []
         for prop in properties:
-            new_articles = [model_to_dict(article) for article in Article.objects.filter(property=prop)]
-        for article in new_articles:
-            articles.append(article)
-        # articles = [model_to_dict(article) for article in articles_build]
+            articles += get_articles(prop)
+        articles = get_keywords(articles)
         context = {'articles': articles}
-        # context = {'loan':model_to_dict(loan),'properties':properties}
         return JsonResponse(context)
 
 class PropertyView(View):
     def get(self, request, term):
-        prop = Property.objects.get(property_name=term)
-        articles = [model_to_dict(article) for article in Article.objects.filter(property=prop)]
+        articles = get_articles(term)
+        articles = get_keywords(articles)
         context = {'articles': articles}
         return JsonResponse(context)
